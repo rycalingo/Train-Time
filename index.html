@@ -52,13 +52,6 @@
                   </tr>
                 </thead>
                 <tbody>
-                	<tr>
-                		<td>North East Express</td>
-                		<td>Hamilton</td>
-                		<td>20</td>
-                		<td>2:35PM</td>
-                		<td>10</td>
-                	</tr>
 
                 </tbody>
               </table>
@@ -67,7 +60,9 @@
     </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.4/moment.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+
 <script type="text/javascript" src="./assets/js/scripts.js"></script>
     <script>
 		  // Initialize Firebase
@@ -89,10 +84,10 @@
         function addTrain(){
 
             var newTrain = {
-                name: $("#train-name").val().trim(),
-                role: $("#dest").val().trim(),
-                start: $("#first-train").val().trim(),
-                rate: $("#freq").val().trim()
+                train: $("#train-name").val().trim(),
+                dest: $("#dest").val().trim(),
+                firstTrain: $("#first-train").val().trim(),
+               	frequency: $("#freq").val().trim()
             }
             return newTrain;
         };
@@ -101,13 +96,28 @@
             event.preventDefault();
 
             database.ref().push(addTrain());
-
+			$(".field").val("");
         });
         database.ref().on("child_added", function(snapshot) {
             var data = snapshot.val();
 
-            console.log(data);
-            var $tr = $("<tr>");
+
+            var newRow = "<tr>" +
+            			 "<td>" + data.train + "</td>" + 
+            			 "<td>" + data.dest + "</td>" + 
+            			 "<td>" + data.frequency + "</td>"
+            			 "</tr>";
+
+            $("tbody").append(newRow);
+
+            for( var key in data ){
+
+            	console.log(key + ": " + data[key]);
+
+            };
+
+
+			console.log(calTimes(data.frequency));
 
         //     for( var i = 0; i < $tr.length; i++) {
         //         console.log($tr[i]);
@@ -120,6 +130,16 @@
         //     $("<tbody>").append(tr);
 
         });
+
+        function calTimes(time) {
+        	var m = moment();
+        	var now = m.subtract(time).format("HH:mm");
+
+
+        	var results = now;
+
+        	return results;
+        }
     </script>
 </body>
 
