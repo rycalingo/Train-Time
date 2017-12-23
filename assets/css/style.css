@@ -1,0 +1,54 @@
+/*  CSS. */
+* { box-sizing: border-box; }
+
+h1 { 
+	font-size: 1.8em;
+	font-weight: 900;
+}
+h2 {
+	font-size: 1.6em;
+	font-weight: 800;
+}
+h3 {
+	font-size: 1.4em;
+	font-weight: 700;
+}
+h4 {
+	font-size: 1.2em;
+	font-weight: 600;
+}
+
+h1, h2, h3, h4 { font-family: 'Georgia', Times, Times New Roman, serif; }
+
+p, ol, li, a { 
+	font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif; color: #777777;
+	font-size: 1em; }
+
+p, ul, ol, li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	line-height: 1.3em;
+}
+
+a { 
+	font-size: 1em;
+	text-decoration: none;
+	font-family: sans-serif;
+}
+label, textarea, textarea { 
+	font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif; color: #777777;
+	font-size: 1em;
+}	
+
+h2{
+	font-size: 50px;
+}
+
+.jumbotron { background-color: #757575; color: #ffffff; }
+
+.table-wrapper { width: 900px; margin: 0 auto 60px; }
+
+.form-container { margin: 0 auto; }
+
+.field { margin-right: 10px; display: inline-block; width: 120px; }
