@@ -18,7 +18,7 @@ h4 {
 	font-weight: 600;
 }
 
-h1, h2, h3, h4 { font-family: 'Georgia', Times, Times New Roman, serif; }
+h1, h2, h3, h4 { font-family: 'Arial', 'Helvetica Neue', Helvetica, serif; }
 
 p, ol, li, a { 
 	font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif; color: #777777;
@@ -36,7 +36,7 @@ a {
 	text-decoration: none;
 	font-family: sans-serif;
 }
-label, textarea, textarea { 
+textarea, { 
 	font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif; color: #777777;
 	font-size: 1em;
 }	
@@ -47,8 +47,19 @@ h2{
 
 .jumbotron { background-color: #757575; color: #ffffff; }
 
-.table-wrapper { width: 900px; margin: 0 auto 60px; }
+.table-wrapper { margin: 120px auto 60px; }
 
-.form-container { margin: 0 auto; }
-
+.form-inline { margin: 0 auto; }
+label span { font-size: 10px; }
 .field { margin-right: 10px; display: inline-block; width: 120px; }
+#submit { margin-top: 25px; font-size: 20px; }
+
+table tr th:nth-child(-n+2) {
+}
+table tr th:nth-child(n+3),
+table tr td:nth-child(n+3) {
+	text-align: center;
+}
+
+
+
