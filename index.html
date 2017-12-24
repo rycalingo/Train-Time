@@ -101,44 +101,45 @@
         database.ref().on("child_added", function(snapshot) {
             var data = snapshot.val();
 
-
-            var newRow = "<tr>" +
-            			 "<td>" + data.train + "</td>" + 
-            			 "<td>" + data.dest + "</td>" + 
-            			 "<td>" + data.frequency + "</td>"
-            			 "</tr>";
-
-            $("tbody").append(newRow);
-
             for( var key in data ){
 
             	console.log(key + ": " + data[key]);
 
             };
 
+            var newRow = "<tr>" +
+            			 "<td>" + data.train + "</td>" + 
+            			 "<td>" + data.dest + "</td>" + 
+            			 "<td>" + data.frequency + "</td>" +
+            			 "<td>" + " " + "</td>" +
+            			 "<td>" + " " + "</td>"
+            			 "</tr>";
 
-			console.log(calTimes(data.frequency));
+            $("tbody").append(newRow);
 
-        //     for( var i = 0; i < $tr.length; i++) {
-        //         console.log($tr[i]);
-
-        //         tr.append("<td>" + $tr[i] + "</td>");
-
-        //     };
-        //     console.log($tr);
-
-        //     $("<tbody>").append(tr);
+			calTimes(data.firstTrain, data.frequency);
 
         });
 
-        function calTimes(time) {
+        function calTimes(start, freq) {
+        	var f = freq/60;
+        	var s = start/100 * 60;
+
         	var m = moment();
-        	var now = m.subtract(time).format("HH:mm");
+        	var diff = moment().subtract(s, 'minutes').format("HH:mm");
 
+        	var r = ((parseInt(diff) * 60) / freq / 60 );
+        	var minsAway = Math.floor(r * 100);
 
-        	var results = now;
+        	var arr = moment().add(minsAway, 'minutes').format("hh:mm a");
 
-        	return results;
+        	var results = "now: " + m.format("HH:mm") + ", diff: " + diff + ", freq: " + f;
+
+        	var data = {arrival: arr, mins: minsAway}
+        	console.log(results);
+        	console.log( arr );
+
+        	return data;
         }
     </script>
 </body>
